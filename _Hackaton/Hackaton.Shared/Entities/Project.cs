@@ -18,15 +18,16 @@ namespace Hackaton.Shared.Entities
         public string description { get; set; }
 
         [Required(ErrorMessage = "Es obligatorio")]
+        [Display(Name = ("¿Esta listo?"))]
         public string state { get; set; }
 
 
         [Required(ErrorMessage = "Es obligatorio")]
         public DateTime dueDate { get; set; }
 
-        public Team team { get; set; }
-
         public HackathonEdition HackathonEdition { get; set; }
+
+        
 
     }
 }

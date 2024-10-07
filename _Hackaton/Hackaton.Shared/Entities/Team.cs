@@ -26,5 +26,7 @@ namespace Hackaton.Shared.Entities
 
         public Project Project { get; set; }
 
+        public ICollection<Assessment> Assessments { get; set; }
+
     }
 }
