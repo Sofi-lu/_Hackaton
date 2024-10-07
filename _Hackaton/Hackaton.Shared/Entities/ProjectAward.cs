@@ -10,12 +10,13 @@ namespace Hackaton.Shared.Entities
 {
     public class ProjectAward
 
-    {
-        [Display(Name = ("Codigo de la puntuación"))]
+    { 
         [Required(ErrorMessage = "Es obligatorio")]
         public int Id { get; set; }
 
 
-        public string description { get; set; }
+        public string Description { get; set; }
+
+        public Project Project { get; set; }
     }
 }

@@ -13,8 +13,15 @@ namespace Hackaton.Shared.Entities
             [Display(Name = ("Codigo evaluacion"))]
             [Required(ErrorMessage = "Es obligatorio")]
             public int Id { get; set; }
+
+            [Required(ErrorMessage = "Es obligatorio")]
             public int Score { get; set; }
             public string Feedback { get; set; }
-        }
+
+        public Project Project { get; set; }
+
+        public Mentor Mentor { get; set; }
+    }
+
     
 }

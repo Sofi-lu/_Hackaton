@@ -14,8 +14,17 @@ namespace Hackaton.Shared.Entities
         public int Id { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+
+
+        [Required(ErrorMessage = "Es obligatorio")]
         public string Name { get; set; }
+
+
+        [Required(ErrorMessage = "Es obligatorio")]
         public string topic { get; set; }
+
+
+        [Required(ErrorMessage = "Es obligatorio")]
         public string organizer { get; set; }
     }
 }

@@ -16,16 +16,16 @@ namespace Hackaton.Shared.Entities
         public int Id { get; set; }
 
 
-        [Display(Name = ("Nombre del participante"))]
-        [MaxLength(20, ErrorMessage = "El {1} puede tener solo 20 caracteres")]
+       
         [Required(ErrorMessage = "Es obligatorio")]
         public string Name { get; set; }
 
 
 
-        [Display(Name = ("Rol del participante"))]
-        [MaxLength(20, ErrorMessage = "El {2} puede tener solo 20 caracteres")]
+        
         [Required(ErrorMessage = "Es obligatorio")]
         public string role { get; set; }
+
+        public Team Team { get; set; }
     }
 }
