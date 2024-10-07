@@ -10,7 +10,7 @@ namespace Hackaton.API.Data
             
         }
         
-        public DbSet<Mentors> Mentors { get; set; } 
+        public DbSet<Mentor> Mentors { get; set; } 
 
 
 

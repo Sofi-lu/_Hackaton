@@ -7,22 +7,21 @@ using System.Threading.Tasks;
 
 namespace Hackaton.Shared.Entities
 {
-     public class Mentors
+     public class Mentor
     {
-        [Display(Name = ("Identificacion del participante"))]
-        [MaxLength(10, ErrorMessage = "El {0} puede tener solo 10 caracteres")]
+        [Display(Name = ("Identificacion del Mentor"))]
         [Required(ErrorMessage = "Es obligatorio")]
         public int Id { get; set; }
 
 
         [Display(Name = ("Nombre del mentor"))]
-        [MaxLength(10, ErrorMessage = "El {1} puede tener solo 10 caracteres")]
+        [MaxLength(20, ErrorMessage = "El {1} puede tener solo 10 caracteres")]
         [Required(ErrorMessage = "Es obligatorio")]
         public string Name { get; set; }
 
 
         [Display(Name = ("Experiencia del mentor"))]
-        [MaxLength(10, ErrorMessage = "El {2} puede tener solo 10 caracteres")]
+        [MaxLength(20, ErrorMessage = "El {2} puede tener solo 10 caracteres")]
         [Required(ErrorMessage = "Es obligatorio")]
         public string Experience { get; set; }
     }
