@@ -10,8 +10,6 @@ namespace Hackaton.Shared.Entities
     
         public class Assessment
         {
-            [Display(Name = ("Codigo evaluacion"))]
-            [Required(ErrorMessage = "Es obligatorio")]
             public int Id { get; set; }
 
             [Required(ErrorMessage = "Es obligatorio")]

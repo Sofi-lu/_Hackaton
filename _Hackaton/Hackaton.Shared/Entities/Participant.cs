@@ -10,22 +10,18 @@ namespace Hackaton.Shared.Entities
 {
     public class Participant
     {
-
-        [Display(Name = ("Identificacion del participante"))]
-        [Required(ErrorMessage = "Es obligatorio")]
         public int Id { get; set; }
 
 
-       
+        [Display(Name = ("Nombre del participante"))]
         [Required(ErrorMessage = "Es obligatorio")]
         public string Name { get; set; }
 
-
-
-        
+        [Display(Name = ("Rol del participante"))]
         [Required(ErrorMessage = "Es obligatorio")]
         public string role { get; set; }
 
+        [Display(Name = ("Equipo del participante"))]
         public Team Team { get; set; }
     }
 }

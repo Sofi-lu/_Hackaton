@@ -9,21 +9,21 @@ namespace Hackaton.Shared.Entities
 {
     public class HackathonEdition
     {
-        [Display(Name = ("Codigo de la edicion de la hackaton"))] 
-        [Required(ErrorMessage = "Es obligatorio")]
+        [Display(Name = ("Codigo de la edicion de la hackaton"))]
         public int Id { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
-
+        [Display(Name = ("Nombre de la edicion de la hackaton"))]
         [Required(ErrorMessage = "Es obligatorio")]
         public string Name { get; set; }
 
 
+        [Display(Name = ("Tematica de la edicion de la hackaton"))]
         [Required(ErrorMessage = "Es obligatorio")]
         public string topic { get; set; }
 
-
+        [Display(Name = ("Organizador a cargo de la edicion de la hackaton"))]
         [Required(ErrorMessage = "Es obligatorio")]
         public string organizer { get; set; }
     }

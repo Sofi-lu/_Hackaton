@@ -5,9 +5,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Hackaton.API.Controllers
 {
+    [ApiController]
+    [Route("/api/assesment")]
     public class AssessmentsController : ControllerBase
     {
         private readonly DataContext _context;
+
+
         public AssessmentsController(DataContext context)
         {
             _context = context;
@@ -16,17 +20,16 @@ namespace Hackaton.API.Controllers
 
         //get por lista => select * from owners
         [HttpGet]
-
         public async Task<ActionResult> Get()
         {
-            return Ok(await _context.Assessments.ToListAsync());
+            return Ok(await _context.assessments.ToListAsync());
         }
 
         // get con parametros
         [HttpGet("{id:int}")]
         public async Task<ActionResult> Get(int id)
         {
-            var mentor = await _context.Assessments.FirstOrDefaultAsync(x => x.Id==id);
+            var mentor = await _context.assessments.FirstOrDefaultAsync(x => x.Id==id);
             if (mentor == null)
             {
                 return NotFound();

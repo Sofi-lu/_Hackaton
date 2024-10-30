@@ -9,21 +9,24 @@ namespace Hackaton.Shared.Entities
 {
     public class Team
     {
-        [Display(Name = ("Codigo de equipo"))]
-        [Required(ErrorMessage = "Es obligatorio")]
+        
+        
         public int Id { get; set; }
 
+
+        [Display(Name = ("Nombre de equipo"))]
         [Required(ErrorMessage = "Es obligatorio")]
         public string Name { get; set; }
 
-       
+        [Display(Name = ("Cantidad de participantes en el equipo"))]
         [Required(ErrorMessage = "Es obligatorio")]
         public int memberCount { get; set; }
 
-        
+        [Display(Name = ("Experiencia"))]
         [Required(ErrorMessage = "Es obligatorio")]
         public string experience { get; set; }
 
+        [Required(ErrorMessage = "Es obligatorio")]
         public Project Project { get; set; }
 
        
