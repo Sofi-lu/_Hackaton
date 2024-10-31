@@ -10,7 +10,7 @@ namespace Hackaton.Shared.Entities
 {
      public class Mentor
     {
-        public int MentorId { get; set; }
+        public int ID_Mentor { get; set; }
 
 
         [Display(Name = ("Nombre del mentor"))]
@@ -24,7 +24,7 @@ namespace Hackaton.Shared.Entities
 
         [JsonIgnore]
         public HackathonEdition HackathonEdition { get; set; }
-        public int HackathonId { get; set;}    
+        public int ID_Hackathon { get; set;}    
 
         [JsonIgnore]
         public ICollection<Assessment> assessments { get; set; }

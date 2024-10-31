@@ -11,7 +11,7 @@ namespace Hackaton.Shared.Entities
 
     public class Assessment
     {
-        public int assessmentId { get; set; }
+        public int ID_Assessment { get; set; }
 
         [Required(ErrorMessage = "Es obligatorio")]
         public int Score { get; set; }
@@ -19,12 +19,11 @@ namespace Hackaton.Shared.Entities
 
         [JsonIgnore]
         public Project Project { get; set; }
-        public int ProjectId { get; set; }
+        public int ID_Project { get; set; }
 
         [JsonIgnore]
         public Mentor Mentor { get; set; }
-        public int MentorId { get; set; }
-
+        public int ID_Mentor { get; set; }
     }
 
     

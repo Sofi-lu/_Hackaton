@@ -10,8 +10,8 @@ namespace Hackaton.Shared.Entities
 {
     public class HackathonEdition
     {
-        [Display(Name = ("Codigo de la edicion de la hackaton"))]
-        public int HackathonId { get; set; }
+        
+        public int IDHackathon { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 

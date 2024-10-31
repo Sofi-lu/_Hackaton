@@ -31,7 +31,7 @@ namespace Hackaton.Shared.Entities
 
         [JsonIgnore]
         public HackathonEdition HackathonEdition { get; set; }
-        public int HackathonId { get; set; }
+        public int IDHackathon { get; set; }
 
         [JsonIgnore]
 

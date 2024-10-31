@@ -12,7 +12,7 @@ namespace Hackaton.Shared.Entities
 {
     public class Project
     { 
-        public int ProjectId { get; set; }
+        public int ID_Project { get; set; }
 
         [Display(Name = ("Nombre del proyecto"))]
         [Required(ErrorMessage = "Es obligatorio")]
@@ -32,7 +32,7 @@ namespace Hackaton.Shared.Entities
 
         [JsonIgnore]
         public Team Team { get; set; }
-        public int TeamId { get; set; }
+        public int ID_Team { get; set; }
 
         [JsonIgnore]
 
