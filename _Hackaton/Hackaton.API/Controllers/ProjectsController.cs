@@ -28,14 +28,14 @@ namespace Hackaton.API.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult> Get(int id)
         {
-            var mentor = await _context.Projects.FirstOrDefaultAsync(x => x.Id==id);
-            if (mentor == null)
+            var project = await _context.Projects.FirstOrDefaultAsync(x => x.Id==id);
+            if (project == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(mentor);
+                return Ok(project);
             }
         }
 
@@ -43,21 +43,21 @@ namespace Hackaton.API.Controllers
 
         [HttpPost]
 
-        public async Task<ActionResult> Post(Mentor mentor)
+        public async Task<ActionResult> Post(Project project)
         {
-            _context.Add(mentor);
+            _context.Add(project);
             await _context.SaveChangesAsync();
-            return Ok(mentor);
+            return Ok(project);
         }
 
         //Put update
         [HttpPut]
 
-        public async Task<ActionResult> Put(Mentor mentor)
+        public async Task<ActionResult> Put(Project project)
         {
-            _context.Update(mentor);
+            _context.Update(project);
             await _context.SaveChangesAsync();
-            return Ok(mentor);
+            return Ok(project);
         }
 
         //delete

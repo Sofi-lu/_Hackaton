@@ -21,21 +21,21 @@ namespace Hackaton.API.Controllers
 
         public async Task<ActionResult> Get()
         {
-            return Ok(await _context.projectAwards.ToListAsync());
+            return Ok(await _context.ProjectAwards.ToListAsync());
         }
 
         // get con parametros
         [HttpGet("{id:int}")]
         public async Task<ActionResult> Get(int id)
         {
-            var mentor = await _context.projectAwards.FirstOrDefaultAsync(x => x.Id==id);
-            if (mentor == null)
+            var ProjectAwards = await _context.ProjectAwards.FirstOrDefaultAsync(x => x.Id==id);
+            if (ProjectAwards == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(mentor);
+                return Ok(ProjectAwards);
             }
         }
 
@@ -43,28 +43,28 @@ namespace Hackaton.API.Controllers
 
         [HttpPost]
 
-        public async Task<ActionResult> Post(Mentor mentor)
+        public async Task<ActionResult> Post(ProjectAward ProjectAwards)
         {
-            _context.Add(mentor);
+            _context.Add(ProjectAwards);
             await _context.SaveChangesAsync();
-            return Ok(mentor);
+            return Ok(ProjectAwards);
         }
 
         //Put update
         [HttpPut]
 
-        public async Task<ActionResult> Put(Mentor mentor)
+        public async Task<ActionResult> Put(ProjectAward ProjectAwards)
         {
-            _context.Update(mentor);
+            _context.Update(ProjectAwards);
             await _context.SaveChangesAsync();
-            return Ok(mentor);
+            return Ok(ProjectAwards);
         }
 
         //delete
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var FilasAfectadas = await _context.Mentors.Where(a => a.Id==id).ExecuteDeleteAsync();
+            var FilasAfectadas = await _context.ProjectAwards.Where(a => a.Id==id).ExecuteDeleteAsync();
             if (FilasAfectadas == 0)
             {
                 return NotFound();

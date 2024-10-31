@@ -22,21 +22,21 @@ namespace Hackaton.API.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            return Ok(await _context.assessments.ToListAsync());
+            return Ok(await _context.Assessments.ToListAsync());
         }
 
         // get con parametros
         [HttpGet("{id:int}")]
         public async Task<ActionResult> Get(int id)
         {
-            var mentor = await _context.assessments.FirstOrDefaultAsync(x => x.Id==id);
-            if (mentor == null)
+            var assessments = await _context.Assessments.FirstOrDefaultAsync(x => x.Id==id);
+            if (assessments == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(mentor);
+                return Ok(assessments);
             }
         }
 
@@ -65,7 +65,7 @@ namespace Hackaton.API.Controllers
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var FilasAfectadas = await _context.Mentors.Where(a => a.Id==id).ExecuteDeleteAsync();
+            var FilasAfectadas = await _context.Assessments.Where(a => a.Id==id).ExecuteDeleteAsync();
             if (FilasAfectadas == 0)
             {
                 return NotFound();

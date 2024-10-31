@@ -28,14 +28,14 @@ namespace Hackaton.API.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult> Get(int id)
         {
-            var mentor = await _context.Participants.FirstOrDefaultAsync(x => x.Id==id);
-            if (mentor == null)
+            var Participant = await _context.Participants.FirstOrDefaultAsync(x => x.Id==id);
+            if (Participant == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(mentor);
+                return Ok(Participant);
             }
         }
 
@@ -43,28 +43,28 @@ namespace Hackaton.API.Controllers
 
         [HttpPost]
 
-        public async Task<ActionResult> Post(Mentor mentor)
+        public async Task<ActionResult> Post(Participant Participant)
         {
-            _context.Add(mentor);
+            _context.Add(Participant);
             await _context.SaveChangesAsync();
-            return Ok(mentor);
+            return Ok(Participant);
         }
 
         //Put update
         [HttpPut]
 
-        public async Task<ActionResult> Put(Mentor mentor)
+        public async Task<ActionResult> Put(Participant Participant)
         {
-            _context.Update(mentor);
+            _context.Update(Participant);
             await _context.SaveChangesAsync();
-            return Ok(mentor);
+            return Ok(Participant);
         }
 
         //delete
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var FilasAfectadas = await _context.Mentors.Where(a => a.Id==id).ExecuteDeleteAsync();
+            var FilasAfectadas = await _context.Participants.Where(a => a.Id==id).ExecuteDeleteAsync();
             if (FilasAfectadas == 0)
             {
                 return NotFound();

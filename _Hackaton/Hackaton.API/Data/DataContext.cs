@@ -13,10 +13,10 @@ namespace Hackaton.API.Data
         public DbSet<Mentor> Mentors { get; set; }
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Project> Projects { get; set; }
-        public DbSet<Team> teams { get; set; }
-        public DbSet<ProjectAward> projectAwards { get; set; }
-        public DbSet<Assessment> assessments { get; set; }
-        public DbSet<HackathonEdition> hackathonEditions { get; set; }
+        public DbSet<Team> Teams { get; set; }
+        public DbSet<ProjectAward> ProjectAwards { get; set; }
+        public DbSet<Assessment> Assessments { get; set; }
+        public DbSet<HackathonEdition> HackathonEditions { get; set; }
 
 
 

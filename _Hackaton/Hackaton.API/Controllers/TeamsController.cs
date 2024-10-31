@@ -21,21 +21,21 @@ namespace Hackaton.API.Controllers
 
         public async Task<ActionResult> Get()
         {
-            return Ok(await _context.teams.ToListAsync());
+            return Ok(await _context.Teams.ToListAsync());
         }
 
         // get con parametros
         [HttpGet("{id:int}")]
         public async Task<ActionResult> Get(int id)
         {
-            var mentor = await _context.teams.FirstOrDefaultAsync(x => x.Id==id);
-            if (mentor == null)
+            var Teams = await _context.Teams.FirstOrDefaultAsync(x => x.Id==id);
+            if (Teams == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(mentor);
+                return Ok(Teams);
             }
         }
 
@@ -43,28 +43,28 @@ namespace Hackaton.API.Controllers
 
         [HttpPost]
 
-        public async Task<ActionResult> Post(Mentor mentor)
+        public async Task<ActionResult> Post(Team Teams)
         {
-            _context.Add(mentor);
+            _context.Add(Teams);
             await _context.SaveChangesAsync();
-            return Ok(mentor);
+            return Ok(Teams);
         }
 
         //Put update
         [HttpPut]
 
-        public async Task<ActionResult> Put(Mentor mentor)
+        public async Task<ActionResult> Put(Team Teams)
         {
-            _context.Update(mentor);
+            _context.Update(Teams);
             await _context.SaveChangesAsync();
-            return Ok(mentor);
+            return Ok(Teams);
         }
 
         //delete
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var FilasAfectadas = await _context.Mentors.Where(a => a.Id==id).ExecuteDeleteAsync();
+            var FilasAfectadas = await _context.Teams.Where(a => a.Id==id).ExecuteDeleteAsync();
             if (FilasAfectadas == 0)
             {
                 return NotFound();

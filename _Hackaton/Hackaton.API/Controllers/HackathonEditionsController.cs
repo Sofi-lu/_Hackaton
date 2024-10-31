@@ -7,12 +7,12 @@ namespace Hackaton.API.Controllers
 {
     [ApiController]
     [Route("/api/editions")]
-    public class HackatonEditionsController : ControllerBase
+    public class HackathonEditionsController : ControllerBase
     {
         private readonly DataContext _context;
 
 
-        public HackatonEditionsController(DataContext context)
+        public HackathonEditionsController(DataContext context)
         {
             _context = context;
 
@@ -22,21 +22,21 @@ namespace Hackaton.API.Controllers
         [HttpGet]
         public async Task<ActionResult> Get()
         {
-            return Ok(await _context.hackathonEditions.ToListAsync());
+            return Ok(await _context.HackathonEditions.ToListAsync());
         }
 
         // get con parametros
         [HttpGet("{id:int}")]
         public async Task<ActionResult> Get(int id)
         {
-            var mentor = await _context.hackathonEditions.FirstOrDefaultAsync(x => x.Id==id);
-            if (mentor == null)
+            var HackathonEdition = await _context.HackathonEditions.FirstOrDefaultAsync(x => x.Id==id);
+            if (HackathonEdition == null)
             {
                 return NotFound();
             }
             else
             {
-                return Ok(mentor);
+                return Ok(HackathonEdition);
             }
         }
 
@@ -44,28 +44,28 @@ namespace Hackaton.API.Controllers
 
         [HttpPost]
 
-        public async Task<ActionResult> Post(Assessment assessment)
+        public async Task<ActionResult> Post(HackathonEdition hackatonedition)
         {
-            _context.Add(assessment);
+            _context.Add(hackatonedition);
             await _context.SaveChangesAsync();
-            return Ok(assessment);
+            return Ok(hackatonedition);
         }
 
         //Put update
         [HttpPut]
 
-        public async Task<ActionResult> Put(Assessment assessment)
+        public async Task<ActionResult> Put(HackathonEdition hackatonedition)
         {
-            _context.Update(assessment);
+            _context.Update(hackatonedition);
             await _context.SaveChangesAsync();
-            return Ok(assessment);
+            return Ok(hackatonedition);
         }
 
         //delete
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var FilasAfectadas = await _context.Mentors.Where(a => a.Id==id).ExecuteDeleteAsync();
+            var FilasAfectadas = await _context.HackathonEditions.Where(a => a.Id==id).ExecuteDeleteAsync();
             if (FilasAfectadas == 0)
             {
                 return NotFound();
