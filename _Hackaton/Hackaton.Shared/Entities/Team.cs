@@ -12,7 +12,7 @@ namespace Hackaton.Shared.Entities
     {
         
         
-        public int TeamId { get; set; }
+        public int ID_Team { get; set; }
 
 
         [Display(Name = ("Nombre de equipo"))]

@@ -11,7 +11,7 @@ namespace Hackaton.Shared.Entities
     public class HackathonEdition
     {
         
-        public int IDHackathon { get; set; }
+        public int ID_Hackathon { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
 
@@ -31,7 +31,9 @@ namespace Hackaton.Shared.Entities
 
         [JsonIgnore]
         public ICollection<Team> Teams { get; set; }
+        [JsonIgnore]
         public ICollection<ProjectAward> Awards { get; set; }
+        [JsonIgnore]
         public ICollection<Mentor> Mentors { get; set; }
 
     }
