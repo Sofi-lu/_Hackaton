@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Hackaton.Shared.Entities
@@ -11,7 +12,7 @@ namespace Hackaton.Shared.Entities
     {
         
         
-        public int Id { get; set; }
+        public int TeamId { get; set; }
 
 
         [Display(Name = ("Nombre de equipo"))]
@@ -27,7 +28,16 @@ namespace Hackaton.Shared.Entities
         public string experience { get; set; }
 
         [Required(ErrorMessage = "Es obligatorio")]
-        public Project Project { get; set; }
+
+        [JsonIgnore]
+        public HackathonEdition HackathonEdition { get; set; }
+        public int HackathonId { get; set; }
+
+        [JsonIgnore]
+
+        public ICollection<Participant> Participants { get; set; }
+        
+
 
        
 
