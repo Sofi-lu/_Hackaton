@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Security.Principal;
 using System.Text;
@@ -25,6 +26,7 @@ namespace Hackaton.Shared.Entities
         [Display(Name = ("Equipo del participante"))]
 
         [JsonIgnore]
+        [ForeignKey("ID_Team")]
         public Team Team { get; set; }
         public int? ID_Team { get; set; }
     }

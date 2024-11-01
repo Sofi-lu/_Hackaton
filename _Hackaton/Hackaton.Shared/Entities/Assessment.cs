@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -18,10 +19,12 @@ namespace Hackaton.Shared.Entities
         public string Feedback { get; set; }
 
         [JsonIgnore]
+        [ForeignKey("ID_Project")]
         public Project Project { get; set; }
         public int? ID_Project { get; set; }
 
         [JsonIgnore]
+        [ForeignKey("ID_Mentor")]
         public Mentor Mentor { get; set; }
         public int? ID_Mentor { get; set; }
     }

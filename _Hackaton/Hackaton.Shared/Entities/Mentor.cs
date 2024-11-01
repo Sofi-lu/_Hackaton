@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -23,6 +24,7 @@ namespace Hackaton.Shared.Entities
         public string Experience { get; set; }
 
         [JsonIgnore]
+        [ForeignKey("ID_Hackathon")]
         public HackathonEdition HackathonEdition { get; set; }
         public int? ID_Hackathon { get; set;}    
 

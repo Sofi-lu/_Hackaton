@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -31,6 +32,7 @@ namespace Hackaton.Shared.Entities
         public string dueDate { get; set; }
 
         [JsonIgnore]
+        [ForeignKey("ID_Team")]
         public Team Team { get; set; }
         public int? ID_Team { get; set; }
 
