@@ -19,11 +19,11 @@ namespace Hackaton.Shared.Entities
 
         [JsonIgnore]
         public Project Project { get; set; }
-        public int ID_Project { get; set; }
+        public int? ID_Project { get; set; }
 
         [JsonIgnore]
         public Mentor Mentor { get; set; }
-        public int ID_Mentor { get; set; }
+        public int? ID_Mentor { get; set; }
     }
 
     

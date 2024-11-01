@@ -32,7 +32,7 @@ namespace Hackaton.Shared.Entities
 
         [JsonIgnore]
         public Team Team { get; set; }
-        public int ID_Team { get; set; }
+        public int? ID_Team { get; set; }
 
         [JsonIgnore]
 
