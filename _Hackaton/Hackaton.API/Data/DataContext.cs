@@ -26,7 +26,7 @@ namespace Hackaton.API.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<HackathonEdition>().HasKey(h => h.ID_Hackathon);
+            modelBuilder.Entity<HackathonEdition>().HasKey(h => h.ID_Hackathon); 
             modelBuilder.Entity<Assessment>().HasKey(h => h.ID_Assessment);
             modelBuilder.Entity<Mentor>().HasKey(h => h.ID_Mentor);
             modelBuilder.Entity<Participant>().HasKey(h => h.ID_Participant);
