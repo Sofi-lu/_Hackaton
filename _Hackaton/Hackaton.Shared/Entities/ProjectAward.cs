@@ -14,7 +14,7 @@ namespace Hackaton.Shared.Entities
 
     { 
         
-        public int ID_Award { get; set; }
+        public int ID { get; set; }
 
         [Required(ErrorMessage = "Es obligatorio")]
         public string Description { get; set; }
@@ -23,11 +23,11 @@ namespace Hackaton.Shared.Entities
         [JsonIgnore]
         
         public Project Project { get; set; }
-        public int ID_Project { get; set; }
+        public int ProjectID { get; set; }
 
         [JsonIgnore]
-        public HackathonEdition HackathonEdition { get; set; }
-        public int? ID_Hackathon { get; set; }
+        public Hackathon Hackathon { get; set; }
+        public int? HackathonID { get; set; }
 
         
 

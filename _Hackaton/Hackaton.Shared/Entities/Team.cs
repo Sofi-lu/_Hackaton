@@ -11,9 +11,9 @@ namespace Hackaton.Shared.Entities
 {
     public class Team
     {
-        
-        
-        public int ID_Team { get; set; }
+
+
+        public int ID { get; set; }
 
 
         [Display(Name = ("Nombre de equipo"))]
@@ -32,9 +32,9 @@ namespace Hackaton.Shared.Entities
 
         [JsonIgnore]
         
-        public HackathonEdition HackathonEdition { get; set; }
+        public Hackathon Hackathon { get; set; }
         
-        public int? ID_Hackathon { get; set; }
+        public int? HackathonID { get; set; }
 
         [JsonIgnore]
 

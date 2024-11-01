@@ -12,7 +12,7 @@ namespace Hackaton.Shared.Entities
 {
     public class Participant
     {
-        public int ID_Participant { get; set; }
+        public int ID{ get; set; }
 
 
         [Display(Name = ("Nombre del participante"))]
@@ -28,6 +28,6 @@ namespace Hackaton.Shared.Entities
         [JsonIgnore]
         
         public Team Team { get; set; }
-        public int? ID_Team { get; set; }
+        public int? TeamID { get; set; }
     }
 }

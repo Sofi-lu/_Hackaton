@@ -28,7 +28,7 @@ namespace Hackaton.API.Controllers
         [HttpGet("{id:int}")]
         public async Task<ActionResult> Get(int id)
         {
-            var ProjectAwards = await _context.ProjectAwards.FirstOrDefaultAsync(x => x.ID_Award==id);
+            var ProjectAwards = await _context.ProjectAwards.FirstOrDefaultAsync(x => x.ID==id);
             if (ProjectAwards == null)
             {
                 return NotFound();
@@ -64,7 +64,7 @@ namespace Hackaton.API.Controllers
         [HttpDelete("{id:int}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var FilasAfectadas = await _context.ProjectAwards.Where(a => a.ID_Award==id).ExecuteDeleteAsync();
+            var FilasAfectadas = await _context.ProjectAwards.Where(a => a.ID==id).ExecuteDeleteAsync();
             if (FilasAfectadas == 0)
             {
                 return NotFound();

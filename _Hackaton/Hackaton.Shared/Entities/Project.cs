@@ -12,8 +12,8 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Hackaton.Shared.Entities
 {
     public class Project
-    { 
-        public int ID_Project { get; set; }
+    {
+        public int ID { get; set; }
 
         [Display(Name = ("Nombre del proyecto"))]
         [Required(ErrorMessage = "Es obligatorio")]
@@ -32,9 +32,9 @@ namespace Hackaton.Shared.Entities
         public string dueDate { get; set; }
 
         [JsonIgnore]
-        
+
         public Team Team { get; set; }
-        public int? ID_Team { get; set; }
+        public int? TeamID { get; set; }
 
         [JsonIgnore]
 

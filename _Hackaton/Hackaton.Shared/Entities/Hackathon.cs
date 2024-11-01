@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Hackaton.Shared.Entities
 {
-    public class HackathonEdition
+    public class Hackathon
     {
         
-        public int ID_Hackathon { get; set; }
+        public int ID { get; set; }
         public String StartDate { get; set; }
         public String EndDate { get; set; }
 
