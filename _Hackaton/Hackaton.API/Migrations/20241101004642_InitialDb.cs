@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -17,8 +16,8 @@ namespace Hackaton.API.Migrations
                 {
                     ID_Hackathon = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StartDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EndDate = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     topic = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     organizer = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -59,7 +58,7 @@ namespace Hackaton.API.Migrations
                     memberCount = table.Column<int>(type: "int", nullable: false),
                     experience = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HackathonEditionID_Hackathon = table.Column<int>(type: "int", nullable: false),
-                    IDHackathon = table.Column<int>(type: "int", nullable: false)
+                    ID_Hackathon = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -102,7 +101,7 @@ namespace Hackaton.API.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     state = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    dueDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    dueDate = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TeamID_Team = table.Column<int>(type: "int", nullable: true),
                     ID_Team = table.Column<int>(type: "int", nullable: false)
                 },
@@ -151,7 +150,7 @@ namespace Hackaton.API.Migrations
                     ID_Award = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ProjectID_Project = table.Column<int>(type: "int", nullable: false),
+                    ProjectID_Project = table.Column<int>(type: "int", nullable: true),
                     ID_Project = table.Column<int>(type: "int", nullable: false),
                     HackathonEditionID_Hackathon = table.Column<int>(type: "int", nullable: true),
                     ID_Hackathon = table.Column<int>(type: "int", nullable: false)
@@ -168,8 +167,7 @@ namespace Hackaton.API.Migrations
                         name: "FK_ProjectAwards_Projects_ProjectID_Project",
                         column: x => x.ProjectID_Project,
                         principalTable: "Projects",
-                        principalColumn: "ID_Project",
-                        onDelete: ReferentialAction.NoAction);
+                        principalColumn: "ID_Project");
                 });
 
             migrationBuilder.CreateIndex(

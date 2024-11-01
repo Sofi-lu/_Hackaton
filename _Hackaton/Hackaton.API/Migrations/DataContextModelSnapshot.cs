@@ -65,15 +65,15 @@ namespace Hackaton.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID_Hackathon"));
 
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("EndDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("StartDate")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("organizer")
                         .IsRequired()
@@ -167,8 +167,9 @@ namespace Hackaton.API.Migrations
                     b.Property<string>("description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("dueDate")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("dueDate")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("state")
                         .IsRequired()
@@ -202,7 +203,7 @@ namespace Hackaton.API.Migrations
                     b.Property<int>("ID_Project")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectID_Project")
+                    b.Property<int?>("ProjectID_Project")
                         .HasColumnType("int");
 
                     b.HasKey("ID_Award");
@@ -225,7 +226,7 @@ namespace Hackaton.API.Migrations
                     b.Property<int>("HackathonEditionID_Hackathon")
                         .HasColumnType("int");
 
-                    b.Property<int>("IDHackathon")
+                    b.Property<int>("ID_Hackathon")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -296,9 +297,7 @@ namespace Hackaton.API.Migrations
 
                     b.HasOne("Hackaton.Shared.Entities.Project", "Project")
                         .WithMany()
-                        .HasForeignKey("ProjectID_Project")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ProjectID_Project");
 
                     b.Navigation("HackathonEdition");
 
