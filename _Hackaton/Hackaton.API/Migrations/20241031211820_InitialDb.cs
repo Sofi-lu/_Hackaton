@@ -69,7 +69,7 @@ namespace Hackaton.API.Migrations
                         column: x => x.HackathonEditionID_Hackathon,
                         principalTable: "HackathonEditions",
                         principalColumn: "ID_Hackathon",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -169,7 +169,7 @@ namespace Hackaton.API.Migrations
                         column: x => x.ProjectID_Project,
                         principalTable: "Projects",
                         principalColumn: "ID_Project",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
