@@ -16,9 +16,12 @@ namespace Hackaton.API.Data
         {
             await _context.Database.EnsureCreatedAsync();
             await CheckHackathonEditions();
-
-
-
+            await CheckMentor();
+            await CheckTeam();
+            await CheckParticipants();
+            await CheckProject();
+            await CheckAssessments();
+            await CheckAwards();
         }
 
         public async Task CheckHackathonEditions()
