@@ -33,6 +33,47 @@ namespace Hackaton.API.Data
             modelBuilder.Entity<Project>().HasKey(h => h.ID_Project);
             modelBuilder.Entity<ProjectAward>().HasKey(h => h.ID_Award);
             modelBuilder.Entity<Team>().HasKey(h => h.ID_Team);
+
+            modelBuilder.Entity<Team>()
+                .HasOne(t => t.HackathonEdition)
+                .WithMany(h => h.Teams)
+                .HasForeignKey(t => t.ID_Hackathon);
+
+            modelBuilder.Entity<Participant>()
+                .HasOne(p => p.Team)
+                .WithMany(t => t.Participants)
+                .HasForeignKey(p => p.ID_Team);
+
+            modelBuilder.Entity<Mentor>()
+                .HasOne(m => m.HackathonEdition)
+                .WithMany(h => h.Mentors)
+                .HasForeignKey(m => m.ID_Hackathon);
+
+            modelBuilder.Entity<Project>()
+                .HasOne(p => p.Team)
+                .WithOne() 
+                .HasForeignKey<Project>(p => p.ID_Team);
+
+            modelBuilder.Entity<Assessment>()
+                .HasOne(a => a.Project)
+                .WithMany(p => p.Assessments)
+                .HasForeignKey(a => a.ID_Project);
+
+            modelBuilder.Entity<Assessment>()
+                .HasOne(a => a.Mentor)
+                .WithMany(m => m.assessments)
+                .HasForeignKey(a => a.ID_Mentor);
+
+            modelBuilder.Entity<ProjectAward>()
+                .HasOne(pa => pa.Project)
+                .WithOne()
+                .HasForeignKey<Project>(p => p.ID_Project);
+
+            modelBuilder.Entity<ProjectAward>()
+                .HasOne(pa => pa.HackathonEdition)
+                .WithMany(h => h.Awards)
+                .HasForeignKey(pa => pa.ID_Hackathon);
         }
+    }
     }
 }

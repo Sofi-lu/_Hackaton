@@ -36,10 +36,14 @@ namespace Hackaton.Shared.Entities
         [JsonIgnore]
 
         public ICollection<Participant> Participants { get; set; }
+
+        
+
         
 
 
-       
+
+
 
     }
 }
