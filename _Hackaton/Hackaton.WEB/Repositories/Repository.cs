@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿
+using System.Text.Json;
 using System.Text;
 
 namespace Hackaton.WEB.Repositories
@@ -7,7 +8,7 @@ namespace Hackaton.WEB.Repositories
     {
         private readonly HttpClient _httpClient;
 
-        private JsonSerializerOptions _jsonDefaultOptions => new JsonSerializerOptions //es para que sepa que recibe un json
+        private JsonSerializerOptions _jsonDefaultOptions => new JsonSerializerOptions
         {
             PropertyNameCaseInsensitive = true,
         };
@@ -88,4 +89,3 @@ namespace Hackaton.WEB.Repositories
         }
     }
 }
-
