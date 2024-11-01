@@ -12,8 +12,8 @@ namespace Hackaton.Shared.Entities
     {
         
         public int ID_Hackathon { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public String StartDate { get; set; }
+        public String EndDate { get; set; }
 
         [Display(Name = ("Nombre de la edicion de la hackaton"))]
         [Required(ErrorMessage = "Es obligatorio")]

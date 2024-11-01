@@ -18,7 +18,6 @@ namespace Hackaton.Shared.Entities
         [Required(ErrorMessage = "Es obligatorio")]
         public string Description { get; set; }
 
-        [Required(ErrorMessage = "Es obligatorio")]
 
         [JsonIgnore]
         public Project Project { get; set; }

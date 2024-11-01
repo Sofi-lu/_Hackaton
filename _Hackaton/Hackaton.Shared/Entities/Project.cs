@@ -28,7 +28,7 @@ namespace Hackaton.Shared.Entities
         [DataType(DataType.DateTime)]
         [Display(Name = ("Fecha de entrega"))]
         [Required(ErrorMessage = "Es obligatorio")]
-        public DateTime dueDate { get; set; }
+        public string dueDate { get; set; }
 
         [JsonIgnore]
         public Team Team { get; set; }
