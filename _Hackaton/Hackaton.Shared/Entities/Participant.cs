@@ -26,7 +26,7 @@ namespace Hackaton.Shared.Entities
         [Display(Name = ("Equipo del participante"))]
 
         [JsonIgnore]
-        [ForeignKey("ID_Team")]
+        
         public Team Team { get; set; }
         public int? ID_Team { get; set; }
     }

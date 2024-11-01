@@ -34,6 +34,8 @@ namespace Hackaton.API.Data
             modelBuilder.Entity<ProjectAward>().HasKey(h => h.ID_Award);
             modelBuilder.Entity<Team>().HasKey(h => h.ID_Team);
 
+            
+
         }
     }
 

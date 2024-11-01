@@ -32,7 +32,7 @@ namespace Hackaton.Shared.Entities
         public string dueDate { get; set; }
 
         [JsonIgnore]
-        [ForeignKey("ID_Team")]
+        
         public Team Team { get; set; }
         public int? ID_Team { get; set; }
 

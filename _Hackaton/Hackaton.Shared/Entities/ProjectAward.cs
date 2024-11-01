@@ -21,12 +21,11 @@ namespace Hackaton.Shared.Entities
 
 
         [JsonIgnore]
-        [ForeignKey("ID_Project")]
+        
         public Project Project { get; set; }
         public int ID_Project { get; set; }
 
         [JsonIgnore]
-        [ForeignKey("ID_Hackathon")]
         public HackathonEdition HackathonEdition { get; set; }
         public int? ID_Hackathon { get; set; }
 

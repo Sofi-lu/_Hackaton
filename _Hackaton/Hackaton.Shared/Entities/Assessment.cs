@@ -19,12 +19,12 @@ namespace Hackaton.Shared.Entities
         public string Feedback { get; set; }
 
         [JsonIgnore]
-        [ForeignKey("ID_Project")]
+        
         public Project Project { get; set; }
         public int? ID_Project { get; set; }
 
         [JsonIgnore]
-        [ForeignKey("ID_Mentor")]
+        
         public Mentor Mentor { get; set; }
         public int? ID_Mentor { get; set; }
     }
