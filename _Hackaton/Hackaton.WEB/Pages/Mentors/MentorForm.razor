@@ -28,7 +28,7 @@
         <label>AreaExperiencia</label>
         <div>
 
-            <InputText width="10" @bind-Value="Mentor.AreaExperiencia" />
+            <InputText width="10" @bind-Value="Mentor.Experience" />
 
         </div>
 
@@ -38,7 +38,7 @@
         <label>Hackathon</label>
         <InputSelect class="form-control" style="width: 200px;" @bind-Value="Mentor.HackathonID">
             <option value="">Seleccionar Hackathon</option> <!-- Opción por defecto -->
-            @foreach (var Hackathon in Hackathonss)
+            @foreach (var Hackathon in Hackathons)
             {
                 <option value="@Hackathon.ID">@Hackathon.Name</option>
             }
@@ -61,14 +61,14 @@
 @code {
 
     // Lista de fk
-    public List<Hackathon> Hackathons { get; set; } = new List<Hackathons>();
+    public List<Hackathon> Hackathons { get; set; } = new List<Hackathon>();
 
     protected override async Task OnInitializedAsync()
     {
         editContext = new(Mentor);
 
         var responseHppt = await repository.GetAsync<List<Hackathon>>("/api/hackathon");
-        Hackathon = responseHppt.Response!.ToList();
+        Hackathons = responseHppt.Response!.ToList();
 
     }
 
