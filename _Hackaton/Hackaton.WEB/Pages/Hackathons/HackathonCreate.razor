@@ -1,0 +1,60 @@
+﻿@page "/hackathons/create"
+@using CurrieTechnologies.Razor.SweetAlert2
+@using Hackaton.Shared.Entities
+@using Hackaton.WEB.Repositories
+
+@inject IRepository repository
+@inject NavigationManager navigationManager
+@inject SweetAlertService sweetAlertService
+
+<h3>Evento Create</h3>
+
+<HackathonForm @ref="HackathonForm" Hackathon="Hackathon" OnSubmit="Create" ReturnAction="Return" />
+
+@code {
+    public Hackathon Hackathon = new();
+
+    public HackathonForm hackatonForm;
+
+    private async Task Create()
+
+    {
+
+        var responseHttp = await repository.PostAsync("/api/hackatones", Hackathon);
+
+        if (responseHttp.Error)
+
+        {
+
+            var mensaje = await responseHttp.GetErrorMessageAsync();
+
+            await sweetAlertService.FireAsync("Error", mensaje);
+
+            return;
+
+        }
+
+        hackatonForm.FormPostedSuccessfully = true;
+
+        navigationManager.NavigateTo("/hackatones");
+
+    }
+
+    private void Return()
+
+    {
+
+
+
+
+
+        Console.WriteLine("Regresar");
+
+
+
+        navigationManager.NavigateTo("/hackatones");
+
+
+
+    }
+}

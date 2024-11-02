@@ -1,0 +1,80 @@
+﻿@page "/Hackatones/edit/{Id:int}"
+@using CurrieTechnologies.Razor.SweetAlert2
+@using Hackaton.Shared.Entities
+@using Hackaton.WEB.Repositories
+
+@inject NavigationManager navigationManager
+@inject IRepository repository
+@inject SweetAlertService swal
+
+
+<h3>Editar Evento</h3>
+
+@if (Hackathon is null)
+
+
+
+{
+    <p>Cargando...</p>
+}
+else
+{
+    <HackathonForm @ref="HackathonForm" Hackathon="Hackathon" OnSubmit="Edit" ReturnAction="Return" />
+}
+
+@code {
+    private Hackathon Hackathon;
+
+
+
+    private HackathonForm HackathonForm;
+
+
+
+    [Parameter]
+    public int Id { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+
+        var responseHTTP = await repository.GetAsync<Hackathon>($"/api/hackathon/{ Id}");
+
+
+        if (responseHTTP.Error)
+        {
+            if (responseHTTP.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                navigationManager.NavigateTo("hackathon");
+            }
+            else
+            {
+                var messageError = await responseHTTP.GetErrorMessageAsync();
+                await swal.FireAsync("Error", messageError, SweetAlertIcon.Error);
+            }
+        }
+        else
+        {
+            Hackathon = responseHTTP.Response;
+        }
+    }
+
+    private async Task Edit()
+    {
+        var responseHTTP = await repository.PutAsync("/api/hackathon", Hackathon);
+
+        if (responseHTTP.Error)
+        {
+            var mensajeError = await responseHTTP.GetErrorMessageAsync();
+            await swal.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+        }
+        else
+        {
+
+            navigationManager.NavigateTo("/hackathons");
+        }
+    }
+
+    private void Return()
+    {
+        navigationManager.NavigateTo("/hackathons");
+    }
+}
