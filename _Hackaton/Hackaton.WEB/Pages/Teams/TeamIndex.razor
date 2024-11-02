@@ -1,0 +1,90 @@
+﻿@page "/team"
+@using CurrieTechnologies.Razor.SweetAlert2
+@using Hackaton.Shared.Entities
+@using Hackaton.WEB.Repositories
+@using Hackaton.WEB.Shared
+@inject IRepository repository
+@inject NavigationManager navigationManager
+@inject SweetAlertService swal
+
+<h3>Equipos</h3>
+<div class="mb-3">
+    <a class="btn btn-primary" href="/team/create">Crear Equipo</a>
+</div>
+<GenericList MyList="Teams">
+    <Body>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    @*Columna*@
+                    <th>Equipo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Team in Teams)
+                {
+                    <tr>
+                        <td>
+                            @*Fila*@
+                            @Team.Name
+                        </td>
+                        <td>
+                            @Team.memberCount
+                        </td>
+                        <td>
+                            @Team.experience
+                        </td>
+                        <td>
+                            <a href="/Equipos/edit/@Team.HackathonID" class="btn btn-warning">Editar</a>
+                            <button class="btn btn-danger" @onclick=@(() =>DeleteAsync(Team))>Borrar</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </Body>
+</GenericList>
+@code {
+    public List<Team> Teams { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        await Load();
+    }
+    private async Task Load()
+    {
+        var responseHppt = await repository.GetAsync<List<Team>>("/api/teams");
+       Teams = responseHppt.Response!;
+    }
+    private async Task DeleteAsync(Team Equipo)
+    {
+        var result = await swal.FireAsync(new SweetAlertOptions
+            {
+                Title = "Confirmación",
+                Text = "¿Esta seguro que quieres borrar el registro?",
+                Icon = SweetAlertIcon.Question,
+                ShowCancelButton = true
+            });
+        var confirm = string.IsNullOrEmpty(result.Value);
+        if (confirm)
+        {
+            return;
+        }
+        var responseHTTP = await repository.DeleteAsync<Team>($"api/Equipos/{Equipo.ID}");
+        if (responseHTTP.Error)
+        {
+            if (responseHTTP.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                navigationManager.NavigateTo("/");
+            }
+            else
+            {
+                var mensajeError = await responseHTTP.GetErrorMessageAsync();
+                await swal.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+            }
+        }
+        else
+        {
+            await Load();
+        }
+    }
+}
