@@ -1,4 +1,4 @@
-﻿@page "/hackathons/edit/{Id:int}"
+﻿@page "/mentor/edit/{Id:int}"
 @using CurrieTechnologies.Razor.SweetAlert2
 @using Hackaton.Shared.Entities
 @using Hackaton.WEB.Repositories
@@ -10,40 +10,30 @@
 
 <h3>Editar Evento</h3>
 
-@if (Hackathon is null)
-
-
-
+@if (Mentor is null)
 {
     <p>Cargando...</p>
 }
 else
 {
-    <HackathonForm @ref="HackathonForm" Hackathon="Hackathon" OnSubmit="Edit" ReturnAction="Return" />
+    <MentorForm @ref="MentorForm" Mentor="Mentor" OnSubmit="Edit" ReturnAction="Return" />
 }
 
 @code {
-    private Hackathon Hackathon;
-
-
-
-    private HackathonForm HackathonForm;
-
-
+    private Mentor Mentor;
+    private MentorForm MentorForm;
 
     [Parameter]
     public int Id { get; set; }
     protected override async Task OnInitializedAsync()
     {
-
-        var responseHTTP = await repository.GetAsync<Hackathon>($"/api/hackathon/{ Id}");
-
+        var responseHTTP = await repository.GetAsync<Mentor>($"/api/mentors/{Id}");
 
         if (responseHTTP.Error)
         {
             if (responseHTTP.HttpResponseMessage.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                navigationManager.NavigateTo("hackathon");
+                navigationManager.NavigateTo("mentor");
             }
             else
             {
@@ -53,13 +43,13 @@ else
         }
         else
         {
-            Hackathon = responseHTTP.Response;
+            Mentor = responseHTTP.Response;
         }
     }
 
     private async Task Edit()
     {
-        var responseHTTP = await repository.PutAsync("/api/hackathon", Hackathon);
+        var responseHTTP = await repository.PutAsync("/api/mentors", Mentor);
 
         if (responseHTTP.Error)
         {
@@ -68,13 +58,15 @@ else
         }
         else
         {
+         //AGREGUE 
+            MentorForm!.FormPostedSuccessfully = true;
 
-            navigationManager.NavigateTo("/hackathons");
+            navigationManager.NavigateTo("/mentors");
         }
     }
 
     private void Return()
     {
-        navigationManager.NavigateTo("/hackathons");
+        navigationManager.NavigateTo("/mentors");
     }
 }

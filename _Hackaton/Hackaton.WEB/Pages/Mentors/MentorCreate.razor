@@ -1,4 +1,4 @@
-﻿@page "/hackathons/create"
+﻿@page "/mentor/create"
 @using CurrieTechnologies.Razor.SweetAlert2
 @using Hackaton.Shared.Entities
 @using Hackaton.WEB.Repositories
@@ -7,20 +7,21 @@
 @inject NavigationManager navigationManager
 @inject SweetAlertService sweetAlertService
 
-<h3>Evento Create</h3>
+<h3>Mentor Create</h3>
 
-<HackathonForm @ref="hackathonForm" Hackathon="Hackathon" OnSubmit="Create" ReturnAction="Return" />
+<MentorForm @ref="mentorForm" Mentor="Mentor" OnSubmit="Create" ReturnAction="Return" />
+
 
 @code {
-    public Hackathon Hackathon = new();
+    public Mentor Mentor = new();
 
-    public HackathonForm hackathonForm;
+    public MentorForm mentorForm;
 
     private async Task Create()
 
     {
 
-        var responseHttp = await repository.PostAsync("/api/hackathons", Hackathon);
+        var responseHttp = await repository.PostAsync("/api/mentor", Mentor);
 
         if (responseHttp.Error)
 
@@ -34,9 +35,9 @@
 
         }
 
-        hackathonForm.FormPostedSuccessfully = true;
+        mentorForm.FormPostedSuccessfully = true;
 
-        navigationManager.NavigateTo("/hackatones");
+        navigationManager.NavigateTo("/mentor");
 
     }
 
@@ -44,17 +45,9 @@
 
     {
 
-
-
-
-
         Console.WriteLine("Regresar");
 
-
-
-        navigationManager.NavigateTo("/hackatones");
-
-
+        navigationManager.NavigateTo("/mentor");
 
     }
 }

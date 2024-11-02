@@ -1,6 +1,8 @@
 ﻿@using CurrieTechnologies.Razor.SweetAlert2
 @using Hackaton.Shared.Entities
+@using Hackaton.WEB.Repositories
 @inject SweetAlertService swal
+@inject IRepository repository
 
 <NavigationLock OnBeforeInternalNavigation="OnBeforeInternalNavigation"></NavigationLock>
 
@@ -11,21 +13,10 @@
 
     <div class="mb-3">
 
-        <label>NombreEvento</label>
+        <label>Nombre Mentor</label>
         <div>
 
-            <InputText width="10" @bind-Value="Hackathon.Name" />
-
-        </div>
-
-    </div>
-
-    <div class="mb-3">
-
-        <label>Fecha Inicio</label>
-        <div>
-
-            <InputText width="10" @bind-Value="Hackathon.StartDate" />
+            <InputText width="10" @bind-Value="Mentor.Name" />
 
         </div>
 
@@ -33,37 +24,29 @@
 
 
     <div class="mb-3">
-        <label>Fecha Fin</label>
+
+        <label>AreaExperiencia</label>
         <div>
-            <InputText width="10" @bind-Value="Hackathon.EndDate" />
+
+            <InputText width="10" @bind-Value="Mentor.AreaExperiencia" />
+
         </div>
+
     </div>
-
-
 
     <div class="mb-3">
-
-        <label>Tema</label>
-        <div>
-
-            <InputText width="10" @bind-Value="Hackathon.topic" />
-
-        </div>
-
+        <label>Hackathon</label>
+        <InputSelect class="form-control" style="width: 200px;" @bind-Value="Mentor.HackathonID">
+            <option value="">Seleccionar Hackathon</option> <!-- Opción por defecto -->
+            @foreach (var Hackathon in Hackathonss)
+            {
+                <option value="@Hackathon.ID">@Hackathon.Name</option>
+            }
+        </InputSelect>
     </div>
 
 
 
-    <div class="mb-3">
-
-        <label>Organizador</label>
-        <div>
-
-            <InputText width="10" @bind-Value="Hackathon.organizer" />
-
-        </div>
-
-    </div>
 
 
     <button class="btn btn-primary" type="button" @onclick="OnSubmit">Guardar</button>
@@ -74,44 +57,42 @@
 
 
 
+
 @code {
+
+    // Lista de fk
+    public List<Hackathon> Hackathons { get; set; } = new List<Hackathons>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        editContext = new(Mentor);
+
+        var responseHppt = await repository.GetAsync<List<Hackathon>>("/api/hackathon");
+        Hackathon = responseHppt.Response!.ToList();
+
+    }
+
+
+
     private EditContext editContext = null;
+
 
     protected override void OnInitialized()
 
     {
-        editContext = new(Hackathon);
+
+        editContext = new(Mentor);
     }
 
-
     [EditorRequired]
-
     [Parameter]
-
-
-
-    public Hackathon Hackathon { get; set; }
-
-
-
+    public Mentor Mentor { get; set; }
     [EditorRequired]
-
     [Parameter]
-
     public EventCallback OnSubmit { get; set; }
-
-
-
-
-
     [EditorRequired]
-
     [Parameter]
-
     public EventCallback ReturnAction { get; set; }
-
-
-
     public bool FormPostedSuccessfully { get; set; } = false;
 
 
@@ -120,7 +101,7 @@
 
     {
 
-        Console.WriteLine("guardando data");
+        Console.WriteLine("gurdando data");
 
         var formWasEdited = editContext.IsModified();
 
